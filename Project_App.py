@@ -736,9 +736,11 @@ with st.sidebar:
     default_end_date = today_date
 
     selected_start_date = st.date_input(
-        "Start Date",
-        value=default_start_date,
-        max_value=today_date - datetime.timedelta(days=730)   # Force at least 2 years
+    "Start Date",
+    value=default_start_date,
+    min_value=datetime.date(1990, 1, 1),   # Allows data back to 1990
+    max_value=today_date - datetime.timedelta(days=730)
+   # Force at least 2 years
     )
     selected_end_date = st.date_input(
         "End Date",
